@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+	 <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20180611095855_CreateTaskDb.cs" />
+    <Compile Remove="Migrations\20180611101828_CreateTaskDb.cs" />
+    <Compile Remove="Migrations\20180611101828_CreateTaskDb.Designer.cs" />
+    <Compile Remove="Migrations\20180611103208_TaskDB.cs" />
+    <Compile Remove="Migrations\20180611103208_TaskDB.Designer.cs" />
+    <Compile Remove="Migrations\20180611103634_TkDb.cs" />
+    <Compile Remove="Migrations\20180611103634_TkDb.Designer.cs" />
+    <Compile Remove="Migrations\20180611104617_new.cs" />
+    <Compile Remove="Migrations\20180611104617_new.Designer.cs" />
+    <Compile Remove="Migrations\20180611104806_rmod PreTaskId.cs" />
+    <Compile Remove="Migrations\20180611104806_rmod PreTaskId.Designer.cs" />
+    <Compile Remove="Migrations\20180713065815_parenttaskchangemigration.cs" />
+    <Compile Remove="Migrations\20180713065815_parenttaskchangemigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Model\TaskManager.Model.csproj" />
+  </ItemGroup>
+
+</Project>

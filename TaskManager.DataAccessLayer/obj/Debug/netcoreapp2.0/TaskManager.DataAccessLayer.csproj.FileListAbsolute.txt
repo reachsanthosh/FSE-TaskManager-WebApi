@@ -1,0 +1,12 @@
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\bin\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.deps.json
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\bin\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\bin\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\bin\Debug\netcoreapp2.0\TaskManager.Model.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\bin\Debug\netcoreapp2.0\TaskManager.Model.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.csprojAssemblyReference.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.AssemblyInfoInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.AssemblyInfo.cs
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.csproj.CopyComplete
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.DataAccessLayer\obj\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.pdb

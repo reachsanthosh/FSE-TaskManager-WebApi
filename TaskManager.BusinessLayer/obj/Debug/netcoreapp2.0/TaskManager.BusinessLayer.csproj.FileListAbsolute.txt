@@ -1,0 +1,14 @@
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.BusinessLayer.deps.json
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.BusinessLayer.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.BusinessLayer.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.Model.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.DataAccessLayer.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\bin\Debug\netcoreapp2.0\TaskManager.Model.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.csprojAssemblyReference.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.csproj.CoreCompileInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.AssemblyInfoInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.AssemblyInfo.cs
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.csproj.CopyComplete
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.BusinessLayer\obj\Debug\netcoreapp2.0\TaskManager.BusinessLayer.pdb
