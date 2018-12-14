@@ -1,0 +1,14 @@
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\TaskManager.Model.Tests.deps.json
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\TaskManager.Model.Tests.runtimeconfig.json
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\TaskManager.Model.Tests.runtimeconfig.dev.json
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\TaskManager.Model.Tests.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\bin\Debug\netcoreapp2.0\TaskManager.Model.Tests.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\obj\Debug\netcoreapp2.0\TaskManager.Model.Tests.csprojAssemblyReference.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\obj\Debug\netcoreapp2.0\TaskManager.Model.Tests.csproj.CoreCompileInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\obj\Debug\netcoreapp2.0\TaskManager.Model.Tests.AssemblyInfoInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\obj\Debug\netcoreapp2.0\TaskManager.Model.Tests.AssemblyInfo.cs
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\obj\Debug\netcoreapp2.0\TaskManager.Model.Tests.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model.Tests\obj\Debug\netcoreapp2.0\TaskManager.Model.Tests.pdb

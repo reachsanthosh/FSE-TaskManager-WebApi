@@ -39,9 +39,7 @@ namespace TaskManager.Service
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseCors(builder => builder
             .AllowAnyOrigin()

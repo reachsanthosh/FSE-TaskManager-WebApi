@@ -16,16 +16,16 @@ namespace TaskManager.Service
     {
         public static void Main(string[] args)
         {
-            var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            var logEvent = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
-                logger.Debug("init main");
+                logEvent.Debug("Initializing the Main program!");
                 BuildWebHost(args).Run();
             }
             catch (Exception ex)
             {
                 //NLog: catch setup errors
-                logger.Error(ex, "Stopped program because of exception");
+                logEvent.Error(ex, "Program is stopped due to an exception!");
                 throw;
             }
             finally

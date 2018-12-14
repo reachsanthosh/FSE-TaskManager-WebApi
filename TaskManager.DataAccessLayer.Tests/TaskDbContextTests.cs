@@ -33,7 +33,7 @@ namespace TaskManager.DataAccessLayer.Tests
 
                 mockModel.Setup(m => m.Entity<TaskDetails>()).Returns(entityTypeBuilder);
 
-                var property = new Property("TaskName", taskModel.GetType(), taskModel.GetType().GetProperty("TaskName"), taskModel.GetType().GetField("Name"), entity, configSource, null);
+                var property = new Property("TaskName", taskModel.GetType(), taskModel.GetType().GetProperty("TaskName"), taskModel.GetType().GetField("TaskName"), entity, configSource, null);
                 var internalPropertyBuilder = new InternalPropertyBuilder(property, internalModelBuilder);
                 var propertyBuilder = new PropertyBuilder<string>(internalPropertyBuilder);
                 taskDbContextStub.TestModelCreation(modelBuilder);

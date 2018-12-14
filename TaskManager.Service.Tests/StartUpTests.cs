@@ -14,7 +14,6 @@ namespace TaskManager.Service.Tests
         [Fact]
         public void TestBuild()
         {
-            //var serviceCollection = new ServiceCollection();
             var configuration = new Mock<IConfiguration>();
             var serviceCollection = new ServiceCollection();
             configuration.Setup(config => config.GetSection("Database").GetSection("Connection").Value).Returns("DummyConnection");
@@ -22,8 +21,8 @@ namespace TaskManager.Service.Tests
         
             startUp.ConfigureServices(serviceCollection);
 
-            var sp = serviceCollection.BuildServiceProvider();
-            var result = sp.GetService<ITaskHandler>();
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var result = serviceProvider.GetService<ITaskHandler>();
             Assert.NotNull(result);           
         }
        

@@ -11,7 +11,7 @@ using Xunit;
 
 namespace TaskManager.BusinessLayer.Tests
 {
-    public class DIBuilderTests
+    public class DependencyBuilderTests
     {
         [Fact]
         public void TestBuild_VerifyDependendencyObjectsAreNotNull()
@@ -21,10 +21,10 @@ namespace TaskManager.BusinessLayer.Tests
 
             configuration.Setup(config => config.GetSection("Database").GetSection("Connection").Value).Returns("DummyConnection");
             DependencyBuilder.Build(serviceCollection, configuration.Object);
-            var sp = serviceCollection.BuildServiceProvider();
-            var result = sp.GetService<ITaskCollection>();
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var result = serviceProvider.GetService<ITaskCollection>();
             Assert.NotNull(result);
-            var dbContext = sp.GetService<TaskDbContext>();
+            var dbContext = serviceProvider.GetService<TaskDbContext>();
             Assert.NotNull(dbContext);
         }
     }

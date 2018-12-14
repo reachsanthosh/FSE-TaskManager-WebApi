@@ -1,7 +1,6 @@
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
-C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\nlog.config
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\TaskManager.Service.Tests.deps.json
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\TaskManager.Service.Tests.runtimeconfig.json
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\TaskManager.Service.Tests.runtimeconfig.dev.json
@@ -22,3 +21,4 @@ C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\obj\
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\obj\Debug\netcoreapp2.0\TaskManager.Service.Tests.csproj.CopyComplete
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\obj\Debug\netcoreapp2.0\TaskManager.Service.Tests.dll
 C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\obj\Debug\netcoreapp2.0\TaskManager.Service.Tests.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service.Tests\bin\Debug\netcoreapp2.0\nlog.config

@@ -13,5 +13,6 @@ namespace TaskManager.BusinessLayer
         Task<TaskDetails> GetTaskAsync(int id);
         Task<int> EditTaskAsync(int id, TaskDetails taskDetail);
         bool IsTaskValidToClose(TaskDetails taskDetail);
+        Task<int> DeleteTaskAsync(TaskDetails taskDetails);
     }
 }

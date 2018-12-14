@@ -22,55 +22,53 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestGetAllAsync_VerifyServiceReturnOkStatus()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var taskDetailsList = new List<TaskDetail>()
+            var taskDetailsList = new List<TaskDetails>()
             {
-                new TaskDetail() {Id = 1, Name ="Task 1 ", Priority = 10},
-                new TaskDetail() {Id = 2, Name ="Task 2 ", Priority = 20},
+                new TaskDetails() {TaskId = 1, TaskName ="Addition", Priority = 10},
+                new TaskDetails() {TaskId = 2, TaskName ="Multiplication", Priority = 20},
             };
 
-            mockManageTask.Setup(manage => manage.ViewTasksAsync()).Returns(Task.FromResult<IEnumerable<TaskDetail>>(taskDetailsList));
-
-            var statusResult = await taskRepository.GetAllAsync();
+            mockHandleTask.Setup(manage => manage.ViewTasksAsync()).Returns(Task.FromResult<IEnumerable<TaskDetails>>(taskDetailsList));
+            var statusResult = await taskCollection.GetAllTasksAsync();
 
             Assert.NotNull(statusResult as OkObjectResult);
 
-            var taskDetailsResult = (statusResult as OkObjectResult).Value as List<TaskDetail>;
+            var taskDetailsResult = (statusResult as OkObjectResult).Value as List<TaskDetails>;
             Assert.Equal(2, taskDetailsResult.Count);
         }
 
         [Fact]
         public async Task TestGetAllAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            mockManageTask.Setup(manage => manage.ViewTasksAsync()).Throws(new Exception());
+            mockHandleTask.Setup(manage => manage.ViewTasksAsync()).Throws(new Exception());
 
-            var statusResult = await taskRepository.GetAllAsync();
+            var statusResult = await taskCollection.GetAllTasksAsync();
 
             Assert.Equal((int)HttpStatusCode.InternalServerError, (statusResult as ObjectResult).StatusCode);
         }
 
 
         [Fact]
-        public async Task TestGetAsync_VerifyServiceReturnOkStatusAndCheckTaskDetails()
+        public async Task TestGetAsync_VerifyServiceReturnOkStatusAndCheckTaskDetailss()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId = 1, TaskName = "Addition", Priority = 10 };
 
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 10 };
+            mockHandleTask.Setup(manage => manage.GetTaskAsync(1)).Returns(Task.FromResult<TaskDetails>(taskDetail));
 
-            mockManageTask.Setup(manage => manage.GetTaskAsync(1)).Returns(Task.FromResult<TaskDetail>(taskDetail));
-
-            var statusResult = await taskRepository.GetAsync(1);
+            var statusResult = await taskCollection.GetTaskAsync(1);
 
             Assert.NotNull(statusResult as OkObjectResult);
 
-            var taskDetailsResult = (statusResult as OkObjectResult).Value as TaskDetail;
-            Assert.Equal("Task 1", taskDetailsResult.Name);
+            var taskDetailsResult = (statusResult as OkObjectResult).Value as TaskDetails;
+            Assert.Equal("Addition", taskDetailsResult.TaskName);
             Assert.Equal(10, taskDetailsResult.Priority);
         }
 
@@ -78,12 +76,12 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestGetAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            mockManageTask.Setup(manage => manage.GetTaskAsync(1)).Throws(new Exception());
+            mockHandleTask.Setup(manage => manage.GetTaskAsync(1)).Throws(new Exception());
 
-            var statusResult = await taskRepository.GetAsync(1);
+            var statusResult = await taskCollection.GetTaskAsync(1);
 
             Assert.Equal((int)HttpStatusCode.InternalServerError, (statusResult as ObjectResult).StatusCode);
         }
@@ -91,27 +89,27 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPostAsync_VerifyServiceReturnOkStatusAndCheckTaskId()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10 };
 
-            mockManageTask.Setup(manage => manage.AddTaskAsync(taskDetail)).Returns(Task.FromResult<int>(1001));
+            mockHandleTask.Setup(manage => manage.AddTaskAsync(taskDetail)).Returns(Task.FromResult<int>(101));
 
-            var statusResult = await taskRepository.PostAsync(taskDetail);
+            var statusResult = await taskCollection.PostTaskAsync(taskDetail);
 
             Assert.NotNull(statusResult as OkObjectResult);
 
-            Assert.Equal("Task Added Successfully and the new task id is 1001", (statusResult as OkObjectResult).Value);
+            Assert.Equal("Task is added successfully and the new task id is 101 and task name Addition", (statusResult as OkObjectResult).Value);
         }
 
         [Fact]
         public async Task TestPostAsync_PassNullAndVerifyServiceReturnBadRequest()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var statusResult = await taskRepository.PostAsync(null);
+            var statusResult = await taskCollection.PostTaskAsync(null);
 
             Assert.NotNull(statusResult as BadRequestResult);
         }
@@ -119,12 +117,12 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPostAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
-            mockManageTask.Setup(manage => manage.AddTaskAsync(taskDetail)).Throws(new Exception());
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10 };
+            mockHandleTask.Setup(manage => manage.AddTaskAsync(taskDetail)).Throws(new Exception());
 
-            var statusResult = await taskRepository.PostAsync(taskDetail);
+            var statusResult = await taskCollection.PostTaskAsync(taskDetail);
 
             Assert.Equal((int)HttpStatusCode.InternalServerError, (statusResult as ObjectResult).StatusCode);
         }
@@ -132,85 +130,83 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_VerifyServiceReturnOkStatusAndCheckServiceResponse()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10 };
 
-            mockManageTask.Setup(manage => manage.EditTaskAsync(1001, taskDetail)).Returns(Task.FromResult<int>(1001));
+            mockHandleTask.Setup(manage => manage.EditTaskAsync(101, taskDetail)).Returns(Task.FromResult<int>(101));
 
-            var statusResult = await taskRepository.PutAsync(1001, taskDetail);
+            var statusResult = await taskCollection.PutTaskAsync(101, taskDetail);
 
             Assert.NotNull(statusResult as OkObjectResult);
 
-            Assert.Equal("Task Updated Successfully for the task name Task 1", (statusResult as OkObjectResult).Value);
+            Assert.Equal("Task is updated successfully and the task id is 101 and task name Addition", (statusResult as OkObjectResult).Value);
         }
 
         [Fact]
-        public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailNull()
+        public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailsNull()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var statusResult = await taskRepository.PutAsync(1001, null);
+            var statusResult = await taskCollection.PutTaskAsync(101, null);
 
             Assert.NotNull(statusResult as BadRequestObjectResult);
-            Assert.Equal("Invalid task to edit.", (statusResult as BadRequestObjectResult).Value);
+            Assert.Equal("Task is null or invalid, please provide valid task details.", (statusResult as BadRequestObjectResult).Value);
         }
 
         [Fact]
-        public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailIdIsInvalid()
+        public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailsIdIsInvalid()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
-            var statusResult = await taskRepository.PutAsync(1002, taskDetail);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Multiplication", Priority = 10 };
+            var statusResult = await taskCollection.PutTaskAsync(102, taskDetail);
 
             Assert.NotNull(statusResult as BadRequestObjectResult);
-            Assert.Equal("Invalid task to edit.", (statusResult as BadRequestObjectResult).Value);
+            Assert.Equal("Task is null or invalid, please provide valid task details.", (statusResult as BadRequestObjectResult).Value);
         }
 
         [Fact]
-        public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailIsNotValidToClose()
+        public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailsIsNotValidToClose()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10, EndTask = true };
-            mockManageTask.Setup(manage => manage.IsTaskValidToClose(taskDetail)).Returns(false);
-            var statusResult = await taskRepository.PutAsync(1001, taskDetail);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10, EndTask = true };
+            mockHandleTask.Setup(manage => manage.IsTaskValidToClose(taskDetail)).Returns(false);
+            var statusResult = await taskCollection.PutTaskAsync(101, taskDetail);
 
             Assert.NotNull(statusResult as BadRequestObjectResult);
             Assert.Equal("You can not close this task as the task have child tasks", (statusResult as BadRequestObjectResult).Value);
         }
 
         [Fact]
-        public async Task TestPutAsync_VerifyServiceReturnOkStatusWhenTaskDetailIsValidToClose()
+        public async Task TestPutAsync_VerifyServiceReturnOkStatusWhenTaskDetailsIsValidToClose()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10, EndTask = true };
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10, EndTask = true };
 
-            mockManageTask.Setup(manage => manage.IsTaskValidToClose(taskDetail)).Returns(true);
+            mockHandleTask.Setup(manage => manage.IsTaskValidToClose(taskDetail)).Returns(true);
+            mockHandleTask.Setup(manage => manage.EditTaskAsync(101, taskDetail)).Returns(Task.FromResult<int>(101));
 
-            mockManageTask.Setup(manage => manage.EditTaskAsync(1001, taskDetail)).Returns(Task.FromResult<int>(1001));
-
-            var statusResult = await taskRepository.PutAsync(1001, taskDetail);
+            var statusResult = await taskCollection.PutTaskAsync(101, taskDetail);
 
             Assert.NotNull(statusResult as OkObjectResult);
-
-            Assert.Equal("Task Updated Successfully for the task name Task 1", (statusResult as OkObjectResult).Value);
+            Assert.Equal("Task is updated successfully and the task id is 101 and task name Addition", (statusResult as OkObjectResult).Value);
         }
 
         [Fact]
         public async Task TestPutAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
-            mockManageTask.Setup(manage => manage.EditTaskAsync(1001, taskDetail)).Throws(new Exception());
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10 };
+            mockHandleTask.Setup(manage => manage.EditTaskAsync(101, taskDetail)).Throws(new Exception());
 
-            var statusResult = await taskRepository.PutAsync(1001, taskDetail);
+            var statusResult = await taskCollection.PutTaskAsync(101, taskDetail);
 
             Assert.Equal((int)HttpStatusCode.InternalServerError, (statusResult as ObjectResult).StatusCode);
         }
@@ -218,12 +214,17 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestDeleteAsync_VerifyServiceReturnNotFoundStatus()
         {
-            var mockManageTask = new Mock<ITaskHandler>();
-            var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
+            var mockHandleTask = new Mock<ITaskHandler>();
+            var taskCollection = new TasksController(mockHandleTask.Object, fixture.Logger);
 
-            var statusResult = await taskRepository.DeleteAsync(1001);
+            var taskDetail = new TaskDetails() { TaskId = 101, TaskName = "Addition", Priority = 10, EndTask = true };
 
-            Assert.NotNull(statusResult as NotFoundObjectResult);
+            mockHandleTask.Setup(manage => manage.IsTaskValidToClose(taskDetail)).Returns(true);
+            mockHandleTask.Setup(manage => manage.EditTaskAsync(101, taskDetail)).Returns(Task.FromResult<int>(101));
+
+            var statusResult = await taskCollection.DeleteTaskAsync(taskDetail);
+
+            Assert.Equal("Task is deleted successfully for the task id is 101 and task name Addition", (statusResult as OkObjectResult).Value);
         }
     }
 }

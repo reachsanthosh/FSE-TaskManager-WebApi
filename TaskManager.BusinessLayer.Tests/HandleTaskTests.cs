@@ -9,10 +9,10 @@ using Xunit;
 
 namespace TaskManager.BusinessLayer.Tests
 {
-    public class ManageTaskTests : IClassFixture<BusinessFixture>
+    public class HandleTaskTests : IClassFixture<BusinessFixture>
     {
         private BusinessFixture fixture;
-        public ManageTaskTests(BusinessFixture dbFixture)
+        public HandleTaskTests(BusinessFixture dbFixture)
         {
             this.fixture = dbFixture;
         }
@@ -22,10 +22,10 @@ namespace TaskManager.BusinessLayer.Tests
         {
             var mockRepository = new Mock<ITaskCollection>();
             var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
-            var taskDetail = new TaskDetail();
+            var taskDetail = new TaskDetails();
             var result = await manageTask.AddTaskAsync(taskDetail);
 
-            mockRepository.Verify(r => r.InsertAsync(taskDetail), Times.Once);
+            mockRepository.Verify(r => r.InsertTaskAsync(taskDetail), Times.Once);
         }
 
         [Fact]
@@ -33,10 +33,10 @@ namespace TaskManager.BusinessLayer.Tests
         {
             var mockRepository = new Mock<ITaskCollection>();
             var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
-            var taskDetail = new TaskDetail();
+            var taskDetail = new TaskDetails();
             var result = await manageTask.EditTaskAsync(10, taskDetail);
 
-            mockRepository.Verify(r => r.UpdateAsync(10,taskDetail), Times.Once);
+            mockRepository.Verify(r => r.UpdateTaskAsync(10,taskDetail), Times.Once);
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace TaskManager.BusinessLayer.Tests
             
             var result = await manageTask.ViewTasksAsync();
 
-            mockRepository.Verify(r => r.GetAllAsync(), Times.Once);
+            mockRepository.Verify(r => r.GetAllTasksAsync(), Times.Once);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace TaskManager.BusinessLayer.Tests
             
             var result = await manageTask.GetTaskAsync(10);
 
-            mockRepository.Verify(r => r.GetAsync(10), Times.Once);
+            mockRepository.Verify(r => r.GetTaskAsync(10), Times.Once);
         }
 
         [Fact]
@@ -66,15 +66,15 @@ namespace TaskManager.BusinessLayer.Tests
         {
             var mockRepository = new Mock<ITaskCollection>();
             var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 20 };
+            var taskDetail = new TaskDetails() { TaskId = 1, TaskName = "Addition", Priority = 20 };
          
-            var taskDetailsList = new List<TaskDetail>()
+            var taskDetailsList = new List<TaskDetails>()
             {
                 taskDetail,
-                new TaskDetail() {Id = 2, Name ="Task 2 ", Priority = 20, ParentId = 1},
+                new TaskDetails() {TaskId = 2, TaskName = "Multiplication", Priority = 20, ParentId = 1},
             };
 
-           mockRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult<IEnumerable<TaskDetail>>(taskDetailsList));
+           mockRepository.Setup(r => r.GetAllTasksAsync()).Returns(Task.FromResult<IEnumerable<TaskDetails>>(taskDetailsList));
 
             var result = manageTask.IsTaskValidToClose(taskDetail);
 
@@ -86,15 +86,15 @@ namespace TaskManager.BusinessLayer.Tests
         {
             var mockRepository = new Mock<ITaskCollection>();
             var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 20 };
+            var taskDetail = new TaskDetails() { TaskId = 1, TaskName = "Addition", Priority = 20 };
 
-            var taskDetailsList = new List<TaskDetail>()
+            var taskDetailsList = new List<TaskDetails>()
             {
                 taskDetail,
-                new TaskDetail() {Id = 2, Name ="Task 2 ", Priority = 20, ParentId = 1, EndTask = true},
+                new TaskDetails() {TaskId = 2, TaskName = "Multiplication", Priority = 20, ParentId = 1, EndTask = true},
             };
 
-            mockRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult<IEnumerable<TaskDetail>>(taskDetailsList));
+            mockRepository.Setup(r => r.GetAllTasksAsync()).Returns(Task.FromResult<IEnumerable<TaskDetails>>(taskDetailsList));
 
             var result = manageTask.IsTaskValidToClose(taskDetail);
 
@@ -106,15 +106,15 @@ namespace TaskManager.BusinessLayer.Tests
         {
             var mockRepository = new Mock<ITaskCollection>();
             var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 20 };
+            var taskDetail = new TaskDetails() { TaskId = 1, TaskName = "Addition", Priority = 20 };
 
-            var taskDetailsList = new List<TaskDetail>()
+            var taskDetailsList = new List<TaskDetails>()
             {
                 taskDetail,
-                new TaskDetail() {Id = 2, Name ="Task 2 ", Priority = 20},
+                new TaskDetails() {TaskId = 2, TaskName = "Multiplication", Priority = 20},
             };
 
-            mockRepository.Setup(r => r.GetAllAsync()).Returns(Task.FromResult<IEnumerable<TaskDetail>>(taskDetailsList));
+            mockRepository.Setup(r => r.GetAllTasksAsync()).Returns(Task.FromResult<IEnumerable<TaskDetails>>(taskDetailsList));
 
             var result = manageTask.IsTaskValidToClose(taskDetail);
 

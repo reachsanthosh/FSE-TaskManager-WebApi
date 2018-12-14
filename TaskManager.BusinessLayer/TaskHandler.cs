@@ -25,6 +25,17 @@ namespace TaskManager.BusinessLayer
             return await taskCollection.InsertTaskAsync(taskDetails);
         }
 
+        public async Task<int> DeleteTaskAsync(TaskDetails taskDetails)
+        {
+            var result = 0;
+
+            logger.LogInformation($"Delete a task for the id { taskDetails.TaskId }");
+            if(IsTaskValidToClose(taskDetails))
+                result = await taskCollection.DeleteTaskAsync(taskDetails);
+
+            return result;
+        }
+
         public async Task<int> EditTaskAsync(int id, TaskDetails taskDetails)
         {
             logger.LogInformation($"Update a task for the id { id }");

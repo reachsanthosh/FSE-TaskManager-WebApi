@@ -1,0 +1,30 @@
+2018-12-15 04:19:51.3520 Info Message Template Auto Format enabled
+2018-12-15 04:19:51.3968 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-15 04:19:51.5687 Info Adding target File Target[allfile]
+2018-12-15 04:19:51.5944 Info Adding target File Target[ownFile-web]
+2018-12-15 04:19:51.5944 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\NLog.config...
+2018-12-15 04:19:51.6344 Info Found 45 configuration items
+2018-12-15 04:19:51.6726 Info Configuration initialized.
+2018-12-15 04:19:51.6872 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.4.7700. Product version: 4.5.4.
+2018-12-15 04:19:52.6083 Info Shutting down logging...
+2018-12-15 04:19:52.6479 Info Logger has been shut down.
+2018-12-15 04:20:20.1580 Info Message Template Auto Format enabled
+2018-12-15 04:20:20.1876 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-15 04:20:20.3687 Info Adding target File Target[allfile]
+2018-12-15 04:20:20.3797 Info Adding target File Target[ownFile-web]
+2018-12-15 04:20:20.3950 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\NLog.config...
+2018-12-15 04:20:20.4416 Info Found 45 configuration items
+2018-12-15 04:20:20.4984 Info Configuration initialized.
+2018-12-15 04:20:20.5059 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.4.7700. Product version: 4.5.4.
+2018-12-15 04:20:21.2102 Info Shutting down logging...
+2018-12-15 04:20:21.2524 Info Logger has been shut down.
+2018-12-15 04:21:05.2710 Info Message Template Auto Format enabled
+2018-12-15 04:21:05.2984 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-15 04:21:05.4491 Info Adding target File Target[allfile]
+2018-12-15 04:21:05.4799 Info Adding target File Target[ownFile-web]
+2018-12-15 04:21:05.5110 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\NLog.config...
+2018-12-15 04:21:05.5943 Info Found 45 configuration items
+2018-12-15 04:21:05.7174 Info Configuration initialized.
+2018-12-15 04:21:05.7538 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.4.7700. Product version: 4.5.4.
+2018-12-15 04:21:18.7819 Info Shutting down logging...
+2018-12-15 04:21:18.8592 Info Logger has been shut down.

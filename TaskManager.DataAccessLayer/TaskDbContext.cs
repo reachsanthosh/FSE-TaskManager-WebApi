@@ -14,12 +14,12 @@ namespace TaskManager.DataAccessLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = DOTNET; Database = Task_Information; Trusted_Connection = True;");
+            optionsBuilder.UseSqlServer(@"Server = DOTNET; Database = TaskManager; Trusted_Connection = True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TaskDetails>().HasKey("Task_Id");           
+            modelBuilder.Entity<TaskDetails>().HasKey("TaskId");           
             modelBuilder.Entity<TaskDetails>().ToTable("Task_Information");         
             modelBuilder.Entity<TaskDetails>().Property(t => t.TaskName).HasColumnName("Task_Name").IsRequired().HasMaxLength(100);
             modelBuilder.Entity<TaskDetails>().Property(t => t.StartDate).HasColumnName("Start_Date").IsRequired();
@@ -27,7 +27,7 @@ namespace TaskManager.DataAccessLayer
             modelBuilder.Entity<TaskDetails>().Property(t => t.ParentId).HasColumnName("ParentId");
             modelBuilder.Entity<TaskDetails>().Property(t => t.Priority).IsRequired();
             modelBuilder.Entity<TaskDetails>().Property(t => t.EndTask).HasColumnName("End_Task").IsRequired();
-            modelBuilder.Entity<TaskDetails>().Property(t => t.TaskId).ValueGeneratedOnAdd().HasColumnName("Task_Id").IsRequired();
+            modelBuilder.Entity<TaskDetails>().Property(t => t.TaskId).ValueGeneratedOnAdd().HasColumnName("TaskId").IsRequired();
         }
     }
 }
