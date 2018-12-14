@@ -17,9 +17,9 @@ namespace TaskManager.Service.Controllers
     [Route("api/Tasks")]
     public class TasksController : Controller
     {
-        private readonly IManageTask manageTask;
+        private readonly ITaskHandler manageTask;
         private readonly ILogger<TasksController> logger;
-        public TasksController(IManageTask manageTask, ILogger<TasksController> logger)
+        public TasksController(ITaskHandler manageTask, ILogger<TasksController> logger)
         {
             this.manageTask = manageTask;
             this.logger = logger;

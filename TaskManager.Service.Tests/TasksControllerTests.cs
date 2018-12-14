@@ -22,7 +22,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestGetAllAsync_VerifyServiceReturnOkStatus()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var taskDetailsList = new List<TaskDetail>()
@@ -44,7 +44,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestGetAllAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             mockManageTask.Setup(manage => manage.ViewTasksAsync()).Throws(new Exception());
@@ -58,7 +58,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestGetAsync_VerifyServiceReturnOkStatusAndCheckTaskDetails()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 10 };
@@ -78,7 +78,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestGetAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             mockManageTask.Setup(manage => manage.GetTaskAsync(1)).Throws(new Exception());
@@ -91,7 +91,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPostAsync_VerifyServiceReturnOkStatusAndCheckTaskId()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
@@ -108,7 +108,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPostAsync_PassNullAndVerifyServiceReturnBadRequest()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var statusResult = await taskRepository.PostAsync(null);
@@ -119,7 +119,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPostAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
             mockManageTask.Setup(manage => manage.AddTaskAsync(taskDetail)).Throws(new Exception());
@@ -132,7 +132,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_VerifyServiceReturnOkStatusAndCheckServiceResponse()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
@@ -149,7 +149,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailNull()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var statusResult = await taskRepository.PutAsync(1001, null);
@@ -161,7 +161,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailIdIsInvalid()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
             var statusResult = await taskRepository.PutAsync(1002, taskDetail);
@@ -173,7 +173,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_VerifyServiceReturnBadRequestWhenTaskDetailIsNotValidToClose()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10, EndTask = true };
             mockManageTask.Setup(manage => manage.IsTaskValidToClose(taskDetail)).Returns(false);
@@ -186,7 +186,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_VerifyServiceReturnOkStatusWhenTaskDetailIsValidToClose()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10, EndTask = true };
@@ -205,7 +205,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestPutAsync_WhenManageTaskThrowsExceptionVerifyServiceReturnInternalServerErrorStatus()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1001, Name = "Task 1", Priority = 10 };
             mockManageTask.Setup(manage => manage.EditTaskAsync(1001, taskDetail)).Throws(new Exception());
@@ -218,7 +218,7 @@ namespace TaskManager.Service.Tests
         [Fact]
         public async Task TestDeleteAsync_VerifyServiceReturnNotFoundStatus()
         {
-            var mockManageTask = new Mock<IManageTask>();
+            var mockManageTask = new Mock<ITaskHandler>();
             var taskRepository = new TasksController(mockManageTask.Object, fixture.Logger);
 
             var statusResult = await taskRepository.DeleteAsync(1001);

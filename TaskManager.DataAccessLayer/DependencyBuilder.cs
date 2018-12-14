@@ -7,7 +7,7 @@ using System.Text;
 
 namespace TaskManager.DataAccessLayer
 {
-   public static class DIBuilder
+   public static class DependencyBuilder
     {
         public static void Build(IServiceCollection services, IConfiguration config)
         {

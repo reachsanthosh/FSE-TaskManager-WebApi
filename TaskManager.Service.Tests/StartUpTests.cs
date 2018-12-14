@@ -23,7 +23,7 @@ namespace TaskManager.Service.Tests
             startUp.ConfigureServices(serviceCollection);
 
             var sp = serviceCollection.BuildServiceProvider();
-            var result = sp.GetService<IManageTask>();
+            var result = sp.GetService<ITaskHandler>();
             Assert.NotNull(result);           
         }
        

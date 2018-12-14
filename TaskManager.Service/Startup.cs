@@ -17,7 +17,6 @@ namespace TaskManager.Service
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            
         }
 
         public IConfiguration Configuration { get; }
@@ -26,17 +25,14 @@ namespace TaskManager.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-
             services.AddMvc();           
-
-            services.AddTransient<IManageTask, ManageTask>();
-
+            services.AddTransient<ITaskHandler, TaskHandler>();
             BuildOtherLayerServices(services);
         }
 
         protected virtual void BuildOtherLayerServices(IServiceCollection services)
         {
-            DIBuilder.Build(services, Configuration);
+            DependencyBuilder.Build(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

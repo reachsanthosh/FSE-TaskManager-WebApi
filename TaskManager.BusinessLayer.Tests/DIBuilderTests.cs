@@ -20,9 +20,9 @@ namespace TaskManager.BusinessLayer.Tests
             var configuration = new Mock<IConfiguration>();
 
             configuration.Setup(config => config.GetSection("Database").GetSection("Connection").Value).Returns("DummyConnection");
-            DIBuilder.Build(serviceCollection, configuration.Object);
+            DependencyBuilder.Build(serviceCollection, configuration.Object);
             var sp = serviceCollection.BuildServiceProvider();
-            var result = sp.GetService<ITaskRepository>();
+            var result = sp.GetService<ITaskCollection>();
             Assert.NotNull(result);
             var dbContext = sp.GetService<TaskDbContext>();
             Assert.NotNull(dbContext);

@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Service", "TaskManager.Service\TaskManager.Service.csproj", "{2D48A783-7D4C-429E-A9D4-AD2D93719C96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Service", "TaskManager.Service\TaskManager.Service.csproj", "{2D48A783-7D4C-429E-A9D4-AD2D93719C96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Model", "TaskManager.Model\TaskManager.Model.csproj", "{81B836A2-380A-4C67-8427-B6F4A953AB0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Model", "TaskManager.Model\TaskManager.Model.csproj", "{81B836A2-380A-4C67-8427-B6F4A953AB0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.BusinessLayer", "TaskManager.BusinessLayer\TaskManager.BusinessLayer.csproj", "{43110FE2-1967-4B5B-802C-935CD44DE94E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.BusinessLayer", "TaskManager.BusinessLayer\TaskManager.BusinessLayer.csproj", "{43110FE2-1967-4B5B-802C-935CD44DE94E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.DataAccessLayer", "TaskManager.DataAccessLayer\TaskManager.DataAccessLayer.csproj", "{DE83CE73-5A79-4604-BB4A-74E572851F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.DataAccessLayer", "TaskManager.DataAccessLayer\TaskManager.DataAccessLayer.csproj", "{DE83CE73-5A79-4604-BB4A-74E572851F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Service.Tests", "TaskManager.Service.Tests\TaskManager.Service.Tests.csproj", "{FAC635A5-A5DB-4F3C-8F13-C20686EE63EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Service.Tests", "TaskManager.Service.Tests\TaskManager.Service.Tests.csproj", "{FAC635A5-A5DB-4F3C-8F13-C20686EE63EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.BusinessLayer.Tests", "TaskManager.BusinessLayer.Tests\TaskManager.BusinessLayer.Tests.csproj", "{830D442E-E343-4568-94AE-FC6A8DF38AA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.BusinessLayer.Tests", "TaskManager.BusinessLayer.Tests\TaskManager.BusinessLayer.Tests.csproj", "{830D442E-E343-4568-94AE-FC6A8DF38AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.DataAccessLayer.Tests", "TaskManager.DataAccessLayer.Tests\TaskManager.DataAccessLayer.Tests.csproj", "{E5D7D9CE-0229-44AC-A5F1-014E15E6BBAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.DataAccessLayer.Tests", "TaskManager.DataAccessLayer.Tests\TaskManager.DataAccessLayer.Tests.csproj", "{E5D7D9CE-0229-44AC-A5F1-014E15E6BBAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Model.Tests", "TaskManager.Model.Tests\TaskManager.Model.Tests.csproj", "{4143675E-C836-48A1-844A-00D9E8DB81C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{E5D7D9CE-0229-44AC-A5F1-014E15E6BBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5D7D9CE-0229-44AC-A5F1-014E15E6BBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5D7D9CE-0229-44AC-A5F1-014E15E6BBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4143675E-C836-48A1-844A-00D9E8DB81C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4143675E-C836-48A1-844A-00D9E8DB81C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4143675E-C836-48A1-844A-00D9E8DB81C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4143675E-C836-48A1-844A-00D9E8DB81C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,11 +8,11 @@ using TaskManager.DataAccessLayer;
 
 namespace TaskManager.BusinessLayer
 {
-    public static class DIBuilder
+    public static class DependencyBuilder
     {
         public static void Build(IServiceCollection services, IConfiguration config)
         {
-            services.AddTransient<ITaskRepository, TaskRepository>();         
+            services.AddTransient<ITaskCollection, TaskCollection>();         
             services.AddEntityFrameworkSqlServer().
                 AddDbContext<TaskDbContext>(option => option.UseSqlServer(config.GetSection("Database").GetSection("Connection").Value));
 

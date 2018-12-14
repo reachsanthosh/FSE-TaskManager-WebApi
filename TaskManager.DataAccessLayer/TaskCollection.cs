@@ -9,39 +9,38 @@ using TaskManager.Model;
 
 namespace TaskManager.DataAccessLayer
 {
-    public class TaskRepository : ITaskRepository
+    public class TaskCollection : ITaskCollection
     {
         private readonly TaskDbContext taskDbContext;
-        private readonly ILogger<TaskRepository> logger;
-        public TaskRepository(TaskDbContext taskDbContext, ILogger<TaskRepository> logger)
+        private readonly ILogger<TaskCollection> logger;
+        public TaskCollection(TaskDbContext taskDbContext, ILogger<TaskCollection> logger)
         {
             this.taskDbContext = taskDbContext;
             this.logger = logger;
         }
-        public async Task<int> DeleteAsync(TaskDetail entity)
+        public async Task<int> DeleteTaskAsync(TaskDetails entity)
         {
             taskDbContext.Tasks.Remove(entity);
-
             return await taskDbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<TaskDetail>> GetAllAsync()
+        public async Task<IEnumerable<TaskDetails>> GetAllTasksAsync()
         {
-            return await taskDbContext.Tasks.AsNoTracking<TaskDetail>().ToListAsync();
+            return await taskDbContext.Tasks.AsNoTracking<TaskDetails>().ToListAsync();
         }
 
-        public async Task<TaskDetail> GetAsync(int id)
+        public async Task<TaskDetails> GetTaskAsync(int id)
         {
-            return await taskDbContext.Tasks.FirstOrDefaultAsync(t => t.Id == id);
+            return await taskDbContext.Tasks.FirstOrDefaultAsync(t => t.TaskId == id);
         }
 
-        public async Task<int> InsertAsync(TaskDetail entity)
+        public async Task<int> InsertTaskAsync(TaskDetails entity)
         {
             taskDbContext.Tasks.Add(entity);
             return await taskDbContext.SaveChangesAsync();
         }
 
-        public async Task<int> UpdateAsync(int id,TaskDetail entity)
+        public async Task<int> UpdateTaskAsync(int id,TaskDetails entity)
         {           
             taskDbContext.Tasks.Update(entity);
             return await taskDbContext.SaveChangesAsync();

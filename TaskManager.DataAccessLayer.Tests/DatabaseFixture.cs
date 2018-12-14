@@ -13,10 +13,10 @@ namespace TaskManager.DataAccessLayer.Tests
         {
             var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
             var factory = serviceProvider.GetService<ILoggerFactory>();
-            Logger = factory.CreateLogger<TaskRepository>();
+            Logger = factory.CreateLogger<TaskCollection>();
         }
 
-        public ILogger<TaskRepository> Logger { get; private set; }
+        public ILogger<TaskCollection> Logger { get; private set; }
         public void Dispose()
         {
             

@@ -1,6 +1,5 @@
 {
   "ExpandedNodes": [
-    "",
     "\\TaskManager.DataAccessLayer",
     "\\TaskManager.DataAccessLayer.Tests",
     "\\TaskManager.Service",

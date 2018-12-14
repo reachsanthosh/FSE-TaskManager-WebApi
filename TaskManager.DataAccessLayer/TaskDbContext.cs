@@ -10,24 +10,24 @@ namespace TaskManager.DataAccessLayer
         {
             
         }
-        public virtual DbSet<TaskDetail> Tasks { get; set; }
+        public virtual DbSet<TaskDetails> Tasks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server = DOTNET; Database = TaskDb; Trusted_Connection = True;");
+            optionsBuilder.UseSqlServer(@"Server = DOTNET; Database = Task_Information; Trusted_Connection = True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TaskDetail>().HasKey("Id");           
-            modelBuilder.Entity<TaskDetail>().ToTable("Task");            
-            modelBuilder.Entity<TaskDetail>().Property(t => t.Name).HasColumnName("Task").IsRequired().HasMaxLength(100);
-            modelBuilder.Entity<TaskDetail>().Property(t => t.StartDate).HasColumnName("Start_Date").IsRequired();
-            modelBuilder.Entity<TaskDetail>().Property(t => t.EndDate).HasColumnName("End_Date").IsRequired();
-            modelBuilder.Entity<TaskDetail>().Property(t => t.ParentId).HasColumnName("ParentId");
-            modelBuilder.Entity<TaskDetail>().Property(t => t.Priority).IsRequired();
-            modelBuilder.Entity<TaskDetail>().Property(t => t.EndTask).HasColumnName("End_Task").IsRequired();
-            modelBuilder.Entity<TaskDetail>().Property(t => t.Id).ValueGeneratedOnAdd().HasColumnName("Task_Id").IsRequired();
+            modelBuilder.Entity<TaskDetails>().HasKey("Task_Id");           
+            modelBuilder.Entity<TaskDetails>().ToTable("Task_Information");         
+            modelBuilder.Entity<TaskDetails>().Property(t => t.TaskName).HasColumnName("Task_Name").IsRequired().HasMaxLength(100);
+            modelBuilder.Entity<TaskDetails>().Property(t => t.StartDate).HasColumnName("Start_Date").IsRequired();
+            modelBuilder.Entity<TaskDetails>().Property(t => t.EndDate).HasColumnName("End_Date").IsRequired();
+            modelBuilder.Entity<TaskDetails>().Property(t => t.ParentId).HasColumnName("ParentId");
+            modelBuilder.Entity<TaskDetails>().Property(t => t.Priority).IsRequired();
+            modelBuilder.Entity<TaskDetails>().Property(t => t.EndTask).HasColumnName("End_Task").IsRequired();
+            modelBuilder.Entity<TaskDetails>().Property(t => t.TaskId).ValueGeneratedOnAdd().HasColumnName("Task_Id").IsRequired();
         }
     }
 }

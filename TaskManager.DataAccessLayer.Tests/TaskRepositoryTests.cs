@@ -13,47 +13,44 @@ using TaskManager.DataAccessLayer.Tests.TestHelper;
 
 namespace TaskManager.DataAccessLayer.Tests
 {
-    public class TaskRepositoryTests : IClassFixture<DatabaseFixture>
+    public class TaskCollectionTests : IClassFixture<DatabaseFixture>
     {
         private DatabaseFixture fixture;
-        public TaskRepositoryTests(DatabaseFixture dbFixture)
+        public TaskCollectionTests(DatabaseFixture dbFixture)
         {
             this.fixture = dbFixture;
         }
 
         [Fact]
-        public async Task TestGetAll_ReturnsTwoTaskDetails()
+        public async Task TestGetAll_ReturnsTwoTaskDetailss()
         {
 
             var contextOptions = new DbContextOptions<TaskDbContext>();
             var mockContext = new Mock<TaskDbContext>(contextOptions);
-           
-            var taskRepository = new TaskRepository(mockContext.Object, fixture.Logger);
+            var taskCollection = new TaskCollection(mockContext.Object, fixture.Logger);
 
-            IQueryable<TaskDetail> taskDetailsList = new List<TaskDetail>()
+            IQueryable<TaskDetails> taskDetailsList = new List<TaskDetails>()
             {
-                new TaskDetail() {Id = 1, Name ="Task 1 ", Priority = 10},
-                new TaskDetail() {Id = 2, Name ="Task 2 ", Priority = 20},
+                new TaskDetails() {TaskId =  1, TaskName = "Addition ", Priority = 10},
+                new TaskDetails() {TaskId =  2, TaskName = "Multiplication ", Priority = 20},
             }.AsQueryable();
 
-            var mockSet = new Mock<DbSet<TaskDetail>>();
+            var mockSet = new Mock<DbSet<TaskDetails>>();
 
-            mockSet.As<IAsyncEnumerable<TaskDetail>>()
-        .Setup(m => m.GetEnumerator())
-        .Returns(new TestAsyncEnumerator<TaskDetail>(taskDetailsList.GetEnumerator()));
+            mockSet.As<IAsyncEnumerable<TaskDetails>>()
+            .Setup(m => m.GetEnumerator())
+            .Returns(new TestAsyncEnumerator<TaskDetails>(taskDetailsList.GetEnumerator()));
 
-            mockSet.As<IQueryable<TaskDetail>>()
+            mockSet.As<IQueryable<TaskDetails>>()
                 .Setup(m => m.Provider)
-                .Returns(new TestAsyncQueryProvider<TaskDetail>(taskDetailsList.Provider));
+                .Returns(new TestAsyncQueryProvider<TaskDetails>(taskDetailsList.Provider));
 
-            mockSet.As<IQueryable<TaskDetail>>().Setup(m => m.Expression).Returns(taskDetailsList.Expression);
-            mockSet.As<IQueryable<TaskDetail>>().Setup(m => m.ElementType).Returns(taskDetailsList.ElementType);
-            mockSet.As<IQueryable<TaskDetail>>().Setup(m => m.GetEnumerator()).Returns(() => taskDetailsList.GetEnumerator());
-
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.Expression).Returns(taskDetailsList.Expression);
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.ElementType).Returns(taskDetailsList.ElementType);
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.GetEnumerator()).Returns(() => taskDetailsList.GetEnumerator());
             mockContext.Setup(m => m.Tasks).Returns(mockSet.Object);
-            // mockContext.SetupProperty(m => m.Tasks, mockSet.Object);
 
-            var taskDetails = await taskRepository.GetAllAsync();
+            var taskDetails = await taskCollection.GetAllTasksAsync();
 
             Assert.Equal(2, taskDetails.Count());
         }
@@ -64,35 +61,29 @@ namespace TaskManager.DataAccessLayer.Tests
 
             var contextOptions = new DbContextOptions<TaskDbContext>();
             var mockContext = new Mock<TaskDbContext>(contextOptions);
+            var taskCollection = new TaskCollection(mockContext.Object, fixture.Logger);
 
-            var taskRepository = new TaskRepository(mockContext.Object, fixture.Logger);
-
-            IQueryable<TaskDetail> taskDetailsList = new List<TaskDetail>()
+            IQueryable<TaskDetails> taskDetailsList = new List<TaskDetails>()
             {
-                new TaskDetail() {Id = 1, Name ="Task 1", Priority = 10},
-                new TaskDetail() {Id = 2, Name ="Task 2", Priority = 20},
+                new TaskDetails() {TaskId =  1, TaskName = "Addition", Priority = 10},
+                new TaskDetails() {TaskId =  2, TaskName = "Multiplication", Priority = 20},
             }.AsQueryable();
 
-            var mockSet = new Mock<DbSet<TaskDetail>>();
+            var mockSet = new Mock<DbSet<TaskDetails>>();
 
-            mockSet.As<IAsyncEnumerable<TaskDetail>>()
-        .Setup(m => m.GetEnumerator())
-        .Returns(new TestAsyncEnumerator<TaskDetail>(taskDetailsList.GetEnumerator()));
+            mockSet.As<IAsyncEnumerable<TaskDetails>>().Setup(m => m.GetEnumerator())
+            .Returns(new TestAsyncEnumerator<TaskDetails>(taskDetailsList.GetEnumerator()));
 
-            mockSet.As<IQueryable<TaskDetail>>()
-                .Setup(m => m.Provider)
-                .Returns(new TestAsyncQueryProvider<TaskDetail>(taskDetailsList.Provider));
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.Provider)
+            .Returns(new TestAsyncQueryProvider<TaskDetails>(taskDetailsList.Provider));
 
-            mockSet.As<IQueryable<TaskDetail>>().Setup(m => m.Expression).Returns(taskDetailsList.Expression);
-            mockSet.As<IQueryable<TaskDetail>>().Setup(m => m.ElementType).Returns(taskDetailsList.ElementType);
-            mockSet.As<IQueryable<TaskDetail>>().Setup(m => m.GetEnumerator()).Returns(() => taskDetailsList.GetEnumerator());
-
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.Expression).Returns(taskDetailsList.Expression);
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.ElementType).Returns(taskDetailsList.ElementType);
+            mockSet.As<IQueryable<TaskDetails>>().Setup(m => m.GetEnumerator()).Returns(() => taskDetailsList.GetEnumerator());
             mockContext.Setup(m => m.Tasks).Returns(mockSet.Object);
-            // mockContext.SetupProperty(m => m.Tasks, mockSet.Object);
-
-            var taskDetails = await taskRepository.GetAsync(2);
-
-            Assert.Equal("Task 2", taskDetails.Name);
+            
+            var taskDetails = await taskCollection.GetTaskAsync(2);
+            Assert.Equal("Multiplication", taskDetails.TaskName);
         }
 
         [Fact]
@@ -100,15 +91,12 @@ namespace TaskManager.DataAccessLayer.Tests
         {
             var contextOptions = new DbContextOptions<TaskDbContext>();
             var mockContext = new Mock<TaskDbContext>(contextOptions);
-          
-            var taskRepository = new TaskRepository(mockContext.Object, fixture.Logger);
-
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1 ", Priority = 10 };
-
-            var mockSet = new Mock<DbSet<TaskDetail>>();
+            var taskCollection = new TaskCollection(mockContext.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId =  1, TaskName =  "Addition ", Priority = 10 };
+            var mockSet = new Mock<DbSet<TaskDetails>>();
 
             mockContext.Setup(m => m.Tasks).Returns(mockSet.Object);
-            var result = await taskRepository.InsertAsync(taskDetail);
+            var result = await taskCollection.InsertTaskAsync(taskDetail);
 
             mockSet.Verify(m => m.Add(taskDetail), Times.Once);
             mockContext.Verify(m => m. SaveChangesAsync(System.Threading.CancellationToken.None), Times.Once);           
@@ -119,15 +107,12 @@ namespace TaskManager.DataAccessLayer.Tests
         {
             var contextOptions = new DbContextOptions<TaskDbContext>();
             var mockContext = new Mock<TaskDbContext>(contextOptions);
-
-            var taskRepository = new TaskRepository(mockContext.Object, fixture.Logger);
-
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1 ", Priority = 10 };
-
-            var mockSet = new Mock<DbSet<TaskDetail>>();
+            var taskCollection = new TaskCollection(mockContext.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId =  1, TaskName =  "Addition ", Priority = 10 };
+            var mockSet = new Mock<DbSet<TaskDetails>>();
 
             mockContext.Setup(m => m.Tasks).Returns(mockSet.Object);
-            var result = await taskRepository.UpdateAsync(1, taskDetail);
+            var result = await taskCollection.UpdateTaskAsync(1, taskDetail);
 
             mockSet.Verify(m => m.Update(taskDetail), Times.Once);
             mockContext.Verify(m => m.SaveChangesAsync(System.Threading.CancellationToken.None), Times.Once);
@@ -138,15 +123,12 @@ namespace TaskManager.DataAccessLayer.Tests
         {
             var contextOptions = new DbContextOptions<TaskDbContext>();
             var mockContext = new Mock<TaskDbContext>(contextOptions);
+            var taskCollection = new TaskCollection(mockContext.Object, fixture.Logger);
+            var taskDetail = new TaskDetails() { TaskId =  1, TaskName =  "Addition ", Priority = 10 };
 
-            var taskRepository = new TaskRepository(mockContext.Object, fixture.Logger);
-
-            var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1 ", Priority = 10 };
-
-            var mockSet = new Mock<DbSet<TaskDetail>>();
-
+            var mockSet = new Mock<DbSet<TaskDetails>>();
             mockContext.Setup(m => m.Tasks).Returns(mockSet.Object);
-            var result = await taskRepository.DeleteAsync(taskDetail);
+            var result = await taskCollection.DeleteTaskAsync(taskDetail);
 
             mockSet.Verify(m => m.Remove(taskDetail), Times.Once);
             mockContext.Verify(m => m.SaveChangesAsync(System.Threading.CancellationToken.None), Times.Once);

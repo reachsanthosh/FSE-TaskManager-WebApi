@@ -12,10 +12,10 @@ namespace TaskManager.BusinessLayer.Tests
         {
             var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
             var factory = serviceProvider.GetService<ILoggerFactory>();
-            Logger = factory.CreateLogger<ManageTask>();
+            Logger = factory.CreateLogger<TaskHandler>();
         }
 
-        public ILogger<ManageTask> Logger { get; private set; }
+        public ILogger<TaskHandler> Logger { get; private set; }
         public void Dispose()
         {
 

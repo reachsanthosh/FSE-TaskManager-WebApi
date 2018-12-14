@@ -20,8 +20,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public async Task TestAddTaskAsync_VerifyInsertAsyncCalledOnce()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             var taskDetail = new TaskDetail();
             var result = await manageTask.AddTaskAsync(taskDetail);
 
@@ -31,8 +31,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public async Task TestEditTaskAsync_VerifyUpdateAsyncCalledOnce()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             var taskDetail = new TaskDetail();
             var result = await manageTask.EditTaskAsync(10, taskDetail);
 
@@ -42,8 +42,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public async Task TestViewTasksAsync_VerifyGetAllAsyncCalledOnce()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             
             var result = await manageTask.ViewTasksAsync();
 
@@ -53,8 +53,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public async Task TestGetTaskAsync_VerifyGetAsyncCalledOnce()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             
             var result = await manageTask.GetTaskAsync(10);
 
@@ -64,8 +64,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public void TestIsTaskValidToClose_ReturnFalseWhenTaskContainsChildTask()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 20 };
          
             var taskDetailsList = new List<TaskDetail>()
@@ -84,8 +84,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public void TestIsTaskValidToClose_ReturnTrueWhenTaskContainsChildTaskWhichIsNOtActive()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 20 };
 
             var taskDetailsList = new List<TaskDetail>()
@@ -104,8 +104,8 @@ namespace TaskManager.BusinessLayer.Tests
         [Fact]
         public void TestIsTaskValidToClose_ReturnTrueWhenTaskDoesNotContainsChildTas()
         {
-            var mockRepository = new Mock<ITaskRepository>();
-            var manageTask = new ManageTask(mockRepository.Object, fixture.Logger);
+            var mockRepository = new Mock<ITaskCollection>();
+            var manageTask = new TaskHandler(mockRepository.Object, fixture.Logger);
             var taskDetail = new TaskDetail() { Id = 1, Name = "Task 1", Priority = 20 };
 
             var taskDetailsList = new List<TaskDetail>()

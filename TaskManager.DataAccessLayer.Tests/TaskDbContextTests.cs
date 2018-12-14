@@ -20,35 +20,28 @@ namespace TaskManager.DataAccessLayer.Tests
             try
             {
                 var contextOptions = new DbContextOptions<TaskDbContext>();
-                var taskModel = new TaskDetail();
+                var taskModel = new TaskDetails();
                 var taskDbContextStub = new TaskDbContextStub(contextOptions);
               
                 var modelBuilder = new ModelBuilder(new ConventionSet());
-                // modelBuilder.Entity
                 var model = new Microsoft.EntityFrameworkCore.Metadata.Internal.Model();
                 var configSource = new ConfigurationSource();
                 var entity = new EntityType("TaskModel", model, configSource);
                 var internalModelBuilder = new InternalModelBuilder(model);
                 var internalEntityTypeBuilder = new InternalEntityTypeBuilder(entity, internalModelBuilder);
-                var entityTypeBuilder = new EntityTypeBuilder<TaskDetail>(internalEntityTypeBuilder);
-                //var entityTypeBuilder = new Mock<EntityTypeBuilder<TaskDetail>>(internalEntityTypeBuilder);
-                //modelBuilder.Entity<TaskDetail>()
-                mockModel.Setup(m => m.Entity<TaskDetail>()).Returns(entityTypeBuilder);
+                var entityTypeBuilder = new EntityTypeBuilder<TaskDetails>(internalEntityTypeBuilder);
 
-                var property = new Property("Name", taskModel.GetType(), taskModel.GetType().GetProperty("Name"), taskModel.GetType().GetField("Name"), entity, configSource, null);
+                mockModel.Setup(m => m.Entity<TaskDetails>()).Returns(entityTypeBuilder);
+
+                var property = new Property("TaskName", taskModel.GetType(), taskModel.GetType().GetProperty("TaskName"), taskModel.GetType().GetField("Name"), entity, configSource, null);
                 var internalPropertyBuilder = new InternalPropertyBuilder(property, internalModelBuilder);
                 var propertyBuilder = new PropertyBuilder<string>(internalPropertyBuilder);
-                //mockModel.Setup(m => m.Entity<TaskDetail>()
-
-                // mockModel.Setup(m => m.Entity<TaskDetail>().Property("Name")).Returns(propertyBuilder);
-
                 taskDbContextStub.TestModelCreation(modelBuilder);
 
-                //mockModel.Verify(m => m.Entity<TaskDetail>().HasKey("Id"), Times.Once);
             }
             catch (Exception ex)
             {
-                mockModel.Verify(m => m.Entity<TaskDetail>().HasKey("Id"), Times.Once);
+                mockModel.Verify(m => m.Entity<TaskDetails>().HasKey("TaskId"), Times.Once);
                 Assert.NotNull(ex);
             }
         }
