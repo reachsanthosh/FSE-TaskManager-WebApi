@@ -47,7 +47,7 @@ namespace TaskManager.DataAccessLayer.Migrations
 
                     b.HasKey("TaskId");
 
-                    b.ToTable("Task_Information");
+                    b.ToTable("Task");
                 });
 #pragma warning restore 612, 618
         }

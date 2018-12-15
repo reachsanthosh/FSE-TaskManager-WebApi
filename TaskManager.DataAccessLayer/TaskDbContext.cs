@@ -20,7 +20,7 @@ namespace TaskManager.DataAccessLayer
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TaskDetails>().HasKey("TaskId");           
-            modelBuilder.Entity<TaskDetails>().ToTable("Task_Information");         
+            modelBuilder.Entity<TaskDetails>().ToTable("Task");         
             modelBuilder.Entity<TaskDetails>().Property(t => t.TaskName).HasColumnName("Task_Name").IsRequired().HasMaxLength(100);
             modelBuilder.Entity<TaskDetails>().Property(t => t.StartDate).HasColumnName("Start_Date").IsRequired();
             modelBuilder.Entity<TaskDetails>().Property(t => t.EndDate).HasColumnName("End_Date").IsRequired();
