@@ -108,3 +108,45 @@
 2018-12-15 09:29:11.4588 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.4.7700. Product version: 4.5.4.
 2018-12-15 09:29:23.6297 Info Shutting down logging...
 2018-12-15 09:29:23.7134 Info Logger has been shut down.
+2018-12-17 06:09:55.0824 Info Message Template Auto Format enabled
+2018-12-17 06:09:55.1160 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-17 06:09:55.4067 Info Adding target File Target[allfile]
+2018-12-17 06:09:55.6699 Info Adding target File Target[ownFile-web]
+2018-12-17 06:09:55.6864 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-17 06:09:55.7349 Info Found 45 configuration items
+2018-12-17 06:12:16.4036 Info Message Template Auto Format enabled
+2018-12-17 06:12:16.4320 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-17 06:12:16.6473 Info Adding target File Target[allfile]
+2018-12-17 06:12:16.6956 Info Adding target File Target[ownFile-web]
+2018-12-17 06:12:16.7103 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-17 06:12:16.7414 Info Found 45 configuration items
+2018-12-17 09:21:49.6596 Info Message Template Auto Format enabled
+2018-12-17 09:21:49.6911 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-17 09:21:49.9615 Info Adding target File Target[allfile]
+2018-12-17 09:21:49.9960 Info Adding target File Target[ownFile-web]
+2018-12-17 09:21:50.0078 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-17 09:21:50.0360 Info Found 45 configuration items
+2018-12-17 09:44:05.4413 Info Message Template Auto Format enabled
+2018-12-17 09:44:05.4608 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-17 09:44:05.6129 Info Adding target File Target[allfile]
+2018-12-17 09:44:05.7042 Info Adding target File Target[ownFile-web]
+2018-12-17 09:44:05.7173 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-17 09:44:05.7455 Info Found 45 configuration items
+2018-12-17 10:09:37.2877 Info Message Template Auto Format enabled
+2018-12-17 10:09:37.3229 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-17 10:09:37.5948 Info Adding target File Target[allfile]
+2018-12-17 10:09:37.6387 Info Adding target File Target[ownFile-web]
+2018-12-17 10:09:37.6510 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-17 10:09:37.6764 Info Found 45 configuration items
+2018-12-17 10:11:32.0428 Info Message Template Auto Format enabled
+2018-12-17 10:11:32.0775 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-17 10:11:32.4453 Info Adding target File Target[allfile]
+2018-12-17 10:11:32.4838 Info Adding target File Target[ownFile-web]
+2018-12-17 10:11:32.4953 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-17 10:11:32.5221 Info Found 45 configuration items
+2018-12-18 08:27:42.6996 Info Message Template Auto Format enabled
+2018-12-18 08:27:42.7219 Info Loading assembly: NLog.Web.AspNetCore
+2018-12-18 08:27:42.9294 Info Adding target File Target[allfile]
+2018-12-18 08:27:42.9830 Info Adding target File Target[ownFile-web]
+2018-12-18 08:27:42.9963 Info Configured from an XML element in C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Service\bin\Debug\netcoreapp2.0\nlog.config...
+2018-12-18 08:27:43.0222 Info Found 45 configuration items

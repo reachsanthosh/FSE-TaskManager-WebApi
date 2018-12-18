@@ -14,7 +14,7 @@ namespace TaskManager.DataAccessLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = DOTNET; Database = TaskManager; Trusted_Connection = True;");
+            //optionsBuilder.UseSqlServer(@"Server = DOTNET; Database = TaskManager; Trusted_Connection = True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
