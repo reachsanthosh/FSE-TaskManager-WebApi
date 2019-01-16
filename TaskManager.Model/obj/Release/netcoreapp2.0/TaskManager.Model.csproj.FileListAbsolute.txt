@@ -1,0 +1,9 @@
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\bin\Release\netcoreapp2.0\TaskManager.Model.deps.json
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\bin\Release\netcoreapp2.0\TaskManager.Model.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\bin\Release\netcoreapp2.0\TaskManager.Model.pdb
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\obj\Release\netcoreapp2.0\TaskManager.Model.csprojAssemblyReference.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\obj\Release\netcoreapp2.0\TaskManager.Model.csproj.CoreCompileInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\obj\Release\netcoreapp2.0\TaskManager.Model.AssemblyInfoInputs.cache
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\obj\Release\netcoreapp2.0\TaskManager.Model.AssemblyInfo.cs
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\obj\Release\netcoreapp2.0\TaskManager.Model.dll
+C:\CTS-IIHT-Mentor-Program\FSE-TaskManager-WebApi\TaskManager.Model\obj\Release\netcoreapp2.0\TaskManager.Model.pdb
